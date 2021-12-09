@@ -48,6 +48,9 @@ async function handleRequest(request) {
          * https://developers.cloudflare.com/workers/runtime-apis/html-rewriter
          */
         .transform(oldResponse)
+      
+        // Search and replace
+        // newResponse = newResponse.(/Source Phrase/g , 'Target Phrase');
 
         // return the modified page
         return newResponse
@@ -62,6 +65,25 @@ async function handleRequest(request) {
 
 
 /*
+
+// Replacing head
+
+const $head = `
+  <head>
+  ...
+  </head>
+`;
+
+.on('head', new replaceHead())
+
+class replaceHead {
+  element(element) {
+    element.replace(head, {html: true});
+  }
+}
+
+// Search & Replace
+html = html.replace( /<\/body>/ , customScripts)
 
 // Rewrite links
 .on("a", new AttributeRewriter("href"))
@@ -88,7 +110,6 @@ class AttributeRewriter {
         }
     }
 }
-
 
 // Adding attributes
 
@@ -117,6 +138,7 @@ class addDimensions {
     }
 }
 
+// Search and reaplace
 
 // Quickly adding scripts to the <head> and closing <body> tags
 
