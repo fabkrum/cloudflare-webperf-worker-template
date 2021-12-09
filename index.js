@@ -50,7 +50,7 @@ async function handleRequest(request) {
         .transform(oldResponse)
       
         // Search and replace
-        // newResponse = newResponse.(/Source Phrase/g , 'Target Phrase');
+        // newResponse = newResponse.replace('/Source Phrase/g', 'Target Phrase');
 
         // return the modified page
         return newResponse
